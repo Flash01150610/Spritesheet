@@ -78,6 +78,24 @@ function createScene() {
 
 }
             function updateScene() {}
+            function createScene() {
+
+    // Animations ...
+
+    plane = this.add.sprite(640, 360, "plane");
+    plane.play("fly");
+
+    this.time.addEvent({
+        delay: 3000,
+        callback: () => {
+            plane.play("explode");
+            plane.once(Phaser.Animations.Events.SPRITE_ANIMATION_COMPLETE, () => {
+                plane.destroy();
+            });
+        }
+    });
+
+}
 
         </script>
     </body>
